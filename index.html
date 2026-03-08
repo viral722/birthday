@@ -12,9 +12,10 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+background:#000; /* BLACK BACKGROUND */
 font-family:'Comic Sans MS',sans-serif;
 overflow:hidden;
+color:white;
 }
 
 /* CENTER BOX */
@@ -23,11 +24,12 @@ overflow:hidden;
 display:flex;
 flex-direction:column;
 align-items:center;
-background:rgba(255,255,255,0.2);
+background:rgba(255,255,255,0.08);
 padding:30px;
 border-radius:20px;
 backdrop-filter:blur(10px);
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+z-index:2;
 }
 
 /* CAKE */
@@ -130,7 +132,16 @@ left:50%;
 transform:translateX(-50%);
 width:2px;
 height:40px;
-background:rgba(0,0,0,.3);
+background:rgba(255,255,255,.3);
+}
+
+/* HEARTS */
+
+.heart{
+position:absolute;
+font-size:24px;
+animation:floatUp linear infinite;
+opacity:.8;
 }
 
 @keyframes floatUp{
@@ -143,8 +154,6 @@ background:rgba(0,0,0,.3);
 </head>
 
 <body>
-
-<!-- MUSIC -->
 
 <audio autoplay loop>
 <source src="i_think_this_love.mp3" type="audio/mpeg">
@@ -173,7 +182,9 @@ background:rgba(0,0,0,.3);
 
 const colors=['#ff6b6b','#4ecdc4','#ffe66d','#ff9ff3','#54a0ff'];
 
-for(let i=0;i<25;i++){
+/* BALLOONS */
+
+for(let i=0;i<20;i++){
 
 let balloon=document.createElement('div');
 balloon.classList.add('balloon');
@@ -186,6 +197,23 @@ balloon.style.width=(40+Math.random()*30)+'px';
 balloon.style.height=(60+Math.random()*40)+'px';
 
 document.body.appendChild(balloon);
+
+}
+
+/* HEARTS */
+
+for(let i=0;i<30;i++){
+
+let heart=document.createElement('div');
+heart.classList.add('heart');
+
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+'%';
+heart.style.bottom='-50px';
+heart.style.fontSize=(20+Math.random()*25)+'px';
+heart.style.animationDuration=(5+Math.random()*8)+'s';
+
+document.body.appendChild(heart);
 
 }
 
