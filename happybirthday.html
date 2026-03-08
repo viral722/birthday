@@ -121,6 +121,7 @@ color:white;
 font-size:2.5rem;
 text-shadow:2px 2px 4px black;
 margin:0;
+text-align:center;
 }
 
 /* BALLOONS */
@@ -157,15 +158,21 @@ background:rgba(0,0,0,.3);
 
 <body>
 
-<!-- BACKGROUND YOUTUBE VIDEO -->
+<!-- BACKGROUND VIDEO -->
 
 <iframe
 id="bg-video"
-src="https://www.youtube.com/embed/e1mOmdykmwI?autoplay=1&mute=1&loop=1&playlist=e1mOmdykmwI&controls=0&modestbranding=1"
+src="https://www.youtube.com/embed/e1mOmdykmwI?autoplay=1&mute=1&loop=1&playlist=e1mOmdykmwI&controls=0"
 frameborder="0"
 allow="autoplay"
 allowfullscreen>
 </iframe>
+
+<!-- MUSIC -->
+
+<audio autoplay loop>
+<source src="i_think_this_love.mp3" type="audio/mpeg">
+</audio>
 
 <div class="center-content">
 
@@ -182,26 +189,21 @@ allowfullscreen>
 
 </div>
 
-<h1>🎉 Happy Birthday In Advance buggu 🎂</h1>
+<h1>🎉 Happy Birthday In Advance Buggu 🎂</h1>
 
 </div>
 
 <script>
-
-/* BALLOON GENERATOR */
 
 const colors=['#ff6b6b','#4ecdc4','#ffe66d','#ff9ff3','#54a0ff'];
 
 for(let i=0;i<20;i++){
 
 let balloon=document.createElement('div');
-
 balloon.classList.add('balloon');
 
 balloon.style.background=colors[Math.floor(Math.random()*colors.length)];
-
 balloon.style.left=Math.random()*100+'%';
-
 balloon.style.animationDuration=(5+Math.random()*10)+'s';
 
 balloon.style.width=(40+Math.random()*30)+'px';
