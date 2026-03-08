@@ -39,6 +39,8 @@ display:flex;
 align-items:center;
 gap:30px;
 margin-bottom:20px;
+flex-wrap:wrap;
+justify-content:center;
 }
 
 /* SIDE IMAGES */
@@ -190,7 +192,7 @@ opacity:.8;
 
 <body>
 
-<audio autoplay loop>
+<audio id="birthdaySong" loop>
 <source src="i_think_this_love.mp3" type="audio/mpeg">
 </audio>
 
@@ -229,40 +231,39 @@ opacity:.8;
 const colors=['#ff6b6b','#4ecdc4','#ffe66d','#ff9ff3','#54a0ff'];
 
 /* BALLOONS */
-
 for(let i=0;i<20;i++){
-
-let balloon=document.createElement('div');
-balloon.classList.add('balloon');
-
-balloon.style.background=colors[Math.floor(Math.random()*colors.length)];
-balloon.style.left=Math.random()*100+'%';
-balloon.style.animationDuration=(6+Math.random()*10)+'s';
-
-balloon.style.width=(40+Math.random()*30)+'px';
-balloon.style.height=(60+Math.random()*40)+'px';
-
-document.body.appendChild(balloon);
-
+    let balloon=document.createElement('div');
+    balloon.classList.add('balloon');
+    balloon.style.background=colors[Math.floor(Math.random()*colors.length)];
+    balloon.style.left=Math.random()*100+'%';
+    balloon.style.animationDuration=(6+Math.random()*10)+'s';
+    balloon.style.width=(40+Math.random()*30)+'px';
+    balloon.style.height=(60+Math.random()*40)+'px';
+    document.body.appendChild(balloon);
 }
 
 /* HEARTS */
-
 for(let i=0;i<30;i++){
-
-let heart=document.createElement('div');
-heart.classList.add('heart');
-
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+'%';
-heart.style.bottom='-50px';
-heart.style.fontSize=(20+Math.random()*25)+'px';
-heart.style.animationDuration=(5+Math.random()*8)+'s';
-
-document.body.appendChild(heart);
-
+    let heart=document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+'%';
+    heart.style.bottom='-50px';
+    heart.style.fontSize=(20+Math.random()*25)+'px';
+    heart.style.animationDuration=(5+Math.random()*8)+'s';
+    document.body.appendChild(heart);
 }
 
+/* MOBILE-FRIENDLY AUTOPLAY */
+const audio = document.getElementById('birthdaySong');
+
+// Try autoplay on load (for desktop)
+audio.play().catch(()=>{ 
+    // For mobile: play on first tap
+    document.body.addEventListener('touchstart', () => {
+        audio.play();
+    }, {once:true});
+});
 </script>
 
 </body>
