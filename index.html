@@ -12,7 +12,7 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#000; /* BLACK BACKGROUND */
+background:#000;
 font-family:'Comic Sans MS',sans-serif;
 overflow:hidden;
 color:white;
@@ -32,10 +32,45 @@ box-shadow:0 10px 30px rgba(0,0,0,0.5);
 z-index:2;
 }
 
+/* CAKE + IMAGES ROW */
+
+.cake-row{
+display:flex;
+align-items:center;
+gap:30px;
+margin-bottom:20px;
+}
+
+/* SIDE IMAGES */
+
+.side-img{
+width:120px;
+border-radius:15px;
+opacity:0;
+transform:scale(.6);
+animation:fadeIn 1s forwards;
+}
+
+.left-img{
+animation-delay:1s;
+}
+
+.right-img{
+animation-delay:1.2s;
+}
+
+/* IMAGE ANIMATION */
+
+@keyframes fadeIn{
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
 /* CAKE */
 
 .cake-container{
-margin-bottom:20px;
 position:relative;
 }
 
@@ -161,6 +196,12 @@ opacity:.8;
 
 <div class="center-content">
 
+<div class="cake-row">
+
+<!-- LEFT IMAGE -->
+<img src="1.jpeg" class="side-img left-img">
+
+<!-- CAKE -->
 <div class="cake-container">
 
 <div class="candle">
@@ -171,6 +212,11 @@ opacity:.8;
 <div class="layer cream"></div>
 <div class="layer bread"></div>
 <div class="layer cream"></div>
+
+</div>
+
+<!-- RIGHT IMAGE -->
+<img src="2.jpeg" class="side-img right-img">
 
 </div>
 
