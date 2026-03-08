@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+font-family:'Comic Sans MS',sans-serif;
+overflow:hidden;
+}
+
+/* VIDEO BACKGROUND */
+
+#bg-video{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:120vw;
+height:120vh;
+z-index:-1;
+opacity:0.6;
+filter:blur(2px);
+pointer-events:none;
+}
+
+/* CENTER BOX */
+
+.center-content{
+display:flex;
+flex-direction:column;
+align-items:center;
+background:rgba(255,255,255,0.15);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(5px);
+}
+
+/* CAKE */
+
+.cake-container{
+margin-bottom:20px;
+position:relative;
+}
+
+.layer{
+width:150px;
+height:30px;
+border-radius:10px;
+margin:3px auto;
+opacity:0;
+transform:translateY(-100px);
+animation:dropCake .5s forwards;
+}
+
+.bread{
+background:#8d6e63;
+border-bottom:4px solid #5d4037;
+}
+
+.cream{
+background:#fff8e1;
+border-bottom:2px solid #ffe0b2;
+}
+
+.layer:nth-child(2){animation-delay:.2s;}
+.layer:nth-child(3){animation-delay:.4s;}
+.layer:nth-child(4){animation-delay:.6s;}
+.layer:nth-child(5){animation-delay:.8s;}
+
+@keyframes dropCake{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* CANDLE */
+
+.candle{
+width:12px;
+height:50px;
+background:repeating-linear-gradient(45deg,#fff,#fff 5px,#ff69b4 5px,#ff69b4 10px);
+margin:auto;
+border-radius:4px;
+position:relative;
+}
+
+/* FLAME */
+
+.flame{
+position:absolute;
+top:-20px;
+left:50%;
+transform:translateX(-50%);
+width:12px;
+height:20px;
+background:linear-gradient(to top,#ff9900,#ffff00);
+border-radius:50% 50% 20% 20%;
+box-shadow:0 0 10px #ff9900;
+animation:flicker .15s infinite alternate;
+}
+
+@keyframes flicker{
+from{transform:translateX(-50%) scale(1);}
+to{transform:translateX(-50%) scale(1.1,.9);}
+}
+
+/* TEXT */
+
+h1{
+color:white;
+font-size:2.5rem;
+text-shadow:2px 2px 4px black;
+margin:0;
+}
+
+/* BALLOONS */
+
+.balloon{
+position:absolute;
+bottom:-100px;
+width:50px;
+height:70px;
+border-radius:50%;
+opacity:.9;
+animation:floatUp linear infinite;
+}
+
+.balloon:before{
+content:"";
+position:absolute;
+bottom:-10px;
+left:50%;
+transform:translateX(-50%);
+width:2px;
+height:40px;
+background:rgba(0,0,0,.3);
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(-120vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND YOUTUBE VIDEO -->
+
+<iframe
+id="bg-video"
+src="https://www.youtube.com/embed/e1mOmdykmwI?autoplay=1&mute=1&loop=1&playlist=e1mOmdykmwI&controls=0&modestbranding=1"
+frameborder="0"
+allow="autoplay"
+allowfullscreen>
+</iframe>
+
+<div class="center-content">
+
+<div class="cake-container">
+
+<div class="candle">
+<div class="flame"></div>
+</div>
+
+<div class="layer bread"></div>
+<div class="layer cream"></div>
+<div class="layer bread"></div>
+<div class="layer cream"></div>
+
+</div>
+
+<h1>🎉 Happy Birthday In Advance buggu 🎂</h1>
+
+</div>
+
+<script>
+
+/* BALLOON GENERATOR */
+
+const colors=['#ff6b6b','#4ecdc4','#ffe66d','#ff9ff3','#54a0ff'];
+
+for(let i=0;i<20;i++){
+
+let balloon=document.createElement('div');
+
+balloon.classList.add('balloon');
+
+balloon.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+balloon.style.left=Math.random()*100+'%';
+
+balloon.style.animationDuration=(5+Math.random()*10)+'s';
+
+balloon.style.width=(40+Math.random()*30)+'px';
+balloon.style.height=(60+Math.random()*40)+'px';
+
+document.body.appendChild(balloon);
+
+}
+
+</script>
+
+</body>
+</html>
